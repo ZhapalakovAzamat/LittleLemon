@@ -29,10 +29,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Onboarding() {
+fun Onboarding(navController: NavHostController) {
     val firstName = remember { mutableStateOf("") }
     val lastName = remember { mutableStateOf("") }
     val email = remember { mutableStateOf("") }
@@ -47,7 +48,7 @@ fun Onboarding() {
             ),
             contentDescription = "Logo",
             modifier = Modifier
-                .size(400.dp, 100.dp)
+                .size(250.dp, 80.dp)
                 .fillMaxSize()
                 .padding(20.dp)
         )
@@ -92,7 +93,7 @@ fun Onboarding() {
         )
         TextField(
             value = firstName.value,
-            textStyle = TextStyle(fontSize = 25.sp),
+            textStyle = TextStyle(fontSize = 20.sp),
             shape = RoundedCornerShape(10.dp),
             onValueChange = { newText -> firstName.value = newText },
             modifier = Modifier
@@ -110,7 +111,7 @@ fun Onboarding() {
         )
         TextField(
             value = lastName.value,
-            textStyle = TextStyle(fontSize = 25.sp),
+            textStyle = TextStyle(fontSize = 20.sp),
             shape = RoundedCornerShape(10.dp),
             onValueChange = { newText -> lastName.value = newText },
             modifier = Modifier
@@ -128,7 +129,7 @@ fun Onboarding() {
         )
         TextField(
             value = email.value,
-            textStyle = TextStyle(fontSize = 25.sp),
+            textStyle = TextStyle(fontSize = 20.sp),
             shape = RoundedCornerShape(10.dp),
             onValueChange = { newText -> email.value = newText },
             modifier = Modifier
@@ -143,7 +144,7 @@ fun Onboarding() {
             colors = ButtonDefaults.buttonColors(Color(0xFFDCAB3B)),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(top = 30.dp, start = 10.dp, end = 10.dp, bottom = 10.dp)
         ) {
             Text(
                 text = "Register",
@@ -153,8 +154,8 @@ fun Onboarding() {
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-fun OnboardingPrewiew(){
-    Onboarding()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun OnboardingPrewiew(){
+//    Onboarding(navController)
+//}
