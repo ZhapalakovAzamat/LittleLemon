@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LiLittleLemon</string>
+    <string name="unsuccessful">Registration unsuccessful. Please enter all data.</string>
+    <string name="successful">Registration successful!</string>
 </resources>
