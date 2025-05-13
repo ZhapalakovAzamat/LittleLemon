@@ -16,12 +16,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,13 +58,17 @@ fun saveToSharedPreferences(
 @Composable
 fun Onboarding(navController: NavHostController) {
     val context = LocalContext.current
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
+    var firstName by rememberSaveable { mutableStateOf("") }
+    var lastName by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 15.dp)
+    ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        
+        verticalArrangement = Arrangement.Center
     ) {
         Image(
             painter = painterResource(
@@ -178,7 +184,7 @@ fun Onboarding(navController: NavHostController) {
                     ).show()
                     navController.navigate(Home.route)
                 }
-                      },
+            },
             border = BorderStroke(1.dp, Color.Red),
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFFDCAB3B)),
@@ -191,6 +197,7 @@ fun Onboarding(navController: NavHostController) {
                 color = Color.Black
             )
         }
+    }
     }
 }
 
